@@ -1,0 +1,41 @@
+#header, #result {
+  color: white;
+  height: 100px;
+  width: 100%;
+  text-align: center;
+}
+
+h1, h2 {
+  font-family: "Verdana";
+}
+
+body {
+  background-color: #184070;
+}
+
+#spacer {
+  height: 10px;
+}
+
+#spacer50 {
+  height: 50px;
+}
+
+#text_input {
+  width: 50%;
+  height: 250px;
+  margin: auto;
+  display: block;
+}
+
+#button_div {
+  width:100%;
+  position: absolute;
+}
+
+#detect_button {
+  width:50%;
+  height:67px;
+  margin: auto;
+  display: block;
+}
