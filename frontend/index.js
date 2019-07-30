@@ -14,7 +14,7 @@ submit = function() {
 };
 
 imgSize = function() {
-  text = document.getElementById('text_input').value;
+  text = document.getElementById('url_input').value;
   console.log('testing')
   var xhttp = new XMLHttpRequest();
   xhttp.addEventListener("readystatechange", function () {
