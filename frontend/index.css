@@ -33,7 +33,7 @@ body {
   position: absolute;
 }
 
-#detect_button {
+.detect_button {
   width:50%;
   height:67px;
   margin: auto;
