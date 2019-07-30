@@ -1,7 +1,7 @@
 #header {
   color: white;
   height: 100px;
-  width: 100%;
+  width: 90%;
   text-align: center;
 }
 
@@ -35,6 +35,9 @@ label {
   width: 90%;
   margin: auto;
   display: block;
+}
+
+input {
   height: 50px;
 }
 
