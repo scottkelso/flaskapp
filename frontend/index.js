@@ -40,7 +40,6 @@ healthCheck = function() {
 };
 
 imgUpload = function() {
-  text = document.getElementById('text_input').value;
   console.log('testing')
   var xhttp = new XMLHttpRequest();
   xhttp.addEventListener("readystatechange", function () {
@@ -58,5 +57,21 @@ imgUpload = function() {
   var formData = new FormData();
   formData.append('file', file);
   xhttp.open("POST", ENDPOINT + "/imgUpload", true);
+  xhttp.send(formData);
+};
+
+imgUploadSize = function() {
+  console.log('testing')
+  var xhttp = new XMLHttpRequest();
+  xhttp.addEventListener("readystatechange", function () {
+    if (this.readyState === 4) {
+      alert("Image is size " + this.responseText);
+    }
+  });
+  var fileInput = document.getElementById('img_upload_size');
+  var file = fileInput.files[0];
+  var formData = new FormData();
+  formData.append('file', file);
+  xhttp.open("POST", ENDPOINT + "/imgUploadSize", true);
   xhttp.send(formData);
 };
