@@ -1,7 +1,7 @@
 <!DOCTYPE html>
     <head>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <title>Demo Flask Application</title>
+        <title>KAIDEN</title>
         <script src = "index.js" type="text/javascript"></script>
         <link href="index.css" type="text/css" rel="stylesheet"/>
     </head>
@@ -10,65 +10,85 @@
       <div id="content" class="mx-auto">
 
           <div id="header" class="mt-3">
-              <h1>Demo Flask Application</h1>
+              <h1>Kainos' Artificial Intelligence Defence & Encryption Network</h1>
           </div>
-          <p class="text_input mb-3">
-            This is an example of some of the things you may want to be able
-            to do in your final project.  This frontend web-application is made
-            with
-            <span class="font-italic">HTML</span>,
-            <span class="font-italic">CSS</span>, and
-            <span class="font-italic">Javascript</span>.  The Javascript
-            is responsible for interacting with the backend Flask API which is
-            assumed to be running for any of the functionality to work.
-          </p>
-
-          <button onclick="healthCheck();" class="detect_button">Health Check</button>
-
           <br>
-          <p class="text_input mb-3">
-            The application should show that text can be sent to and from the
-            backend via the <span class="font-weight-bold">Health Check</span>
-            , the <span class="font-weight-bold">Submit Text</span>, and the
-            <span class="font-weight-bold">URL</span>. The URL step is useful
-            because backend it uses the URL is was sent to download the image
-            and then check its size and report that back.
-          </p>
-          <br>
-
-          <label for="text_input">
-            <h3>Text</h3>
-          </label>
-          <input id="text_input" type="text" name="text_input" class="text_input">
-          <button id='detect_button' onclick="submit();" class="detect_button">Submit Text</button>
-          <p id=result></p>
-          <br>
-
-          <label for="Text1">
-            <h3>URL</h3>
-          </label>
-          <textarea id="url_input" name="Text1" cols="40" rows="5" class="text_input"></textarea>
-          <button onclick="imgSize();" class="detect_button">Image Size</button>
-          <br><br>
 
           <p class="text_input mb-3">
-            Instead of sending a link to an image that might not be online,
-            you may need to send the whole image to the backend. This is an
-            example of that where we can upload an image file to be sent and
-            stored backend.
+            KAIDEN is an Intelligent Defence system that protects the Kainos network.
+            It is built up of a number of Machine Learning modules which <span class="font-weight-bold">need cold started!</span>
           </p>
-          <input id="img_upload" name="file" type="file" class="indent" style="color:white;">
-          <br>
-          <button onclick="imgUpload();" class="detect_button">Image Upload</button>
-          <br><br>
 
-          <p class="text_input mb-3">
-            SOLUTION TO CHALLENGE
-          </p>
-          <input id="img_upload_size" name="file" type="file" class="indent" style="color:white;">
+          <h3 class="text_input mb-3" id="healthcheck_warning">
+            <span class="badge badge-warning">WARNING: Healthcheck Needed!</span>
+          </h3>
+
+          <button onclick="healthcheck();" class="detect_button">Health Check</button>
+
           <br>
-          <button onclick="imgUploadSize();" class="detect_button">Image Upload</button>
-          <br><br>
+          <div class="d-flex justify-content-center" style="display:none;">
+            <div id="spinner" class="text-warning" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+          </div>
+
+          <div id="modules" style="display:none;">
+            <br>
+            <p class="text_input mb-3">
+              It appears that some of the modules are down.
+              Provide the correct files/keys required to start the modules one by one.
+            </p>
+            <br>
+
+            <label for="text_input">
+              <h3>Data Aquisition <span id="data_aquisition_status" class="badge badge-danger">ERROR: Module Offline!</span></h3>
+            </label>
+            <p class="text_input mb-3">
+              Machine Learning requires a dataset to learn, so that it has the ability to make predictions.
+              Upload the dataset file.
+              <br>
+              <span class="font-weight-bold">Admin Notes: [30/10/2019 09:50:07] Dataset file is saved on a memory stick.</span>
+            </p>
+            <input id="file_upload" name="file" type="file" class="indent" style="color:white;">
+            <br>
+            <button id='' onclick="fileUpload()" class="detect_button">Submit File</button>
+            <p id=result></p>
+            <br>
+
+            <label for="text_input">
+              <h3>Data Preprocessing <span id="data_preprocessing_status" class="badge badge-danger">ERROR: Module Offline!</span></h3>
+            </label>
+            <p class="text_input mb-3">
+              Sometimes the dataset that is to be used to train a Machine Learning algorithm can have values missing, wrong data, or text.
+              Machine Learning algorithms need numerical data with no missing values.
+            </p>
+            <input id="" type="text" name="" class="text_input">
+            <button id='' onclick="" class="detect_button">Submit Code</button>
+            <p id=result></p>
+            <br>
+
+            <label for="text_input">
+              <h3>Algorithm Selector <span id="algorithm_selector_status" class="badge badge-danger">ERROR: Module Offline!</span></h3>
+            </label>
+            <p class="text_input mb-3">
+              Most Machine Learning algorithms can work with any dataset.
+              It is important however to get one that can produce an accuracte result.
+              Enter three KAIDEN compatible algorithm codes.
+            </p>
+            <input id="" type="text" name="" class="text_input">
+            <input id="" type="text" name="" class="text_input">
+            <input id="" type="text" name="" class="text_input">
+            <button id='' onclick="" class="detect_button">Submit Code</button>
+            <p id=result></p>
+            <br>
+
+            
+            <button id='' onclick="" class="detect_button">Begin Training!</button>
+            <p id=result></p>
+
+            <br><br>
+          </div>
+
 
         </div>
 

@@ -14,61 +14,56 @@ app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 CORS(app)
 
-@app.route('/')
-def index():
-    return "The backend got " + request.args.get('input') \
-            + " and we just sent it back!"
+# @app.route('/')
+# def index():
+#     return "The backend got " + request.args.get('input') \
+#             + " and we just sent it back!"
 
 @app.route('/healthcheck')
 def healthcheck():
     print("Testing")
     return "I'm ok!"
 
-@app.route('/imgSize/')
-def imgSize():
-    url = request.args.get('input')
-    try:
-        width, height = im.getImgSizeURL(url)
-        return "Width: {}, Height: {}".format(width, height)
-    except:
-        return "An error occured!"
+# @app.route('/imgSize/')
+# def imgSize():
+#     url = request.args.get('input')
+#     try:
+#         width, height = im.getImgSizeURL(url)
+#         return "Width: {}, Height: {}".format(width, height)
+#     except:
+#         return "An error occured!"
 
 # https://flask.palletsprojects.com/en/1.1.x/patterns/fileuploads/
-@app.route('/imgUpload', methods=['POST'])
-def imgUpload():
+@app.route('/fileUpload', methods=['POST'])
+def fileUpload():
     if request.method == 'POST':
-        if 'file' not in request.files:
-            return "No file found!"
-        file = request.files['file']
-        if file.filename == '':
-            return "File not selected"
-        if file and allowed_file(file.filename):
-            file = request.files['file']
-            file.save(os.path.join(app.config['UPLOAD_FOLDER'], file.filename))
-            file.close
+        print(request.data)
+        if request.data == b'main.py':
             return "ok"
+        else:
+            return "filename incorrect"
 
 def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
-# https://flask.palletsprojects.com/en/1.1.x/patterns/fileuploads/
-@app.route('/imgUploadSize', methods=['POST'])
-def imgUploadSize():
-   if request.method == 'POST':
-       if 'file' not in request.files:
-           return "No file found!"
-       file = request.files['file']
-       if file.filename == '':
-           return "File not selected"
-       if file and allowed_file(file.filename):
-           file = request.files['file']
-           file.save(os.path.join(app.config['UPLOAD_FOLDER'], file.filename))
-           img = Image.open(os.path.join(app.config['UPLOAD_FOLDER'], file.filename))
-           file.close
-           print("Got image size as "+str(img.size))
-           width, height = im.getImgSize(img)
-           return "Width: {}, Height: {}".format(width, height)
+# # https://flask.palletsprojects.com/en/1.1.x/patterns/fileuploads/
+# @app.route('/imgUploadSize', methods=['POST'])
+# def imgUploadSize():
+#    if request.method == 'POST':
+#        if 'file' not in request.files:
+#            return "No file found!"
+#        file = request.files['file']
+#        if file.filename == '':
+#            return "File not selected"
+#        if file and allowed_file(file.filename):
+#            file = request.files['file']
+#            file.save(os.path.join(app.config['UPLOAD_FOLDER'], file.filename))
+#            img = Image.open(os.path.join(app.config['UPLOAD_FOLDER'], file.filename))
+#            file.close
+#            print("Got image size as "+str(img.size))
+#            width, height = im.getImgSize(img)
+#            return "Width: {}, Height: {}".format(width, height)
 
 
 if __name__ == '__main__':
